@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type="text/css" href="Design.css">
+    <title>Calculator design</title>
+
+
+   <script>
+       function equalValue()
+       {
+        var result = document.getElementById('inputValue').value;
+        result = eval(result);
+
+        document.getElementById('inputValue').value = result;
+    }
+
+       function clickValue(c)
+        {
+        var obj = document.getElementById('inputValue');
+        // int + string -> string이 쎄다. 그래서 string으로 바뀐다.
+        obj.value += ""+c;
+       }
+       function cle() /*계산기에서 C기능*/
+        {
+            document.calc.txt.value= "";
+        }
+        
+        function all_clear()
+        {
+            var obj = document.getElementById('inputValue');
+            obj.value = "";
+        }   
+        function CE()
+        {
+            var exp = document.getElementById('inputValue').value; //13+24
+            //sub 접두어 = 보조, 조금 ,일부 String = 문자열 substring(시작 index, 끝 index);
+            exp = exp.substring(0, exp.length-1); // (0,5);
+            document.getElementById('inputValue').value = exp;
+        }
+   </script>
+</head>
+<body>
+    <form>
+    <table border: 1 class = "my_table">
+        <form class = "calculator" name = "calc">
+        <tr>
+          
+            <td  colspan="4" style = "background-color : #606060" >
+                <input style = "text-align: right;" id="inputValue" type="text" name="value"
+                readonly="">
+            </td>  
+        </tr>
+        <tr>
+            <td style = "background-color: #DCDCDC" onclick='all_clear()'>AC</td>
+            <td style = "background-color: #DCDCDC" onclick="cle">C</td>
+            <td style = "background-color: #DCDCDC" onclick = "CE()">CE</td>
+            <td style = "color : white; background-color : #FFA500" onclick="clickValue('/')">÷</td>
+        </tr>
+        <tr>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(7)">7</td>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(8)">8</td>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(9)">9</td>
+            <td style = "color : white; background-color : #FFA500" onclick="clickValue('*')">×</td>
+        </tr>
+        <tr>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(4)">4</td>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(5)">5</td>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(6)">6</td>
+            <td style = "color : white; background-color : #FFA500" onclick="clickValue('-')">-</td>
+        </tr>
+        <tr>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(1)">1</td>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(2)">2</td>
+            <td style = "background-color: #DCDCDC" onclick="clickValue(3)">3</td>
+            <td style = "color : white; background-color : #FFA500" onclick="clickValue('+')">+</td>
+        </tr>
+        <tr>
+            <td style = "background-color: #DCDCDC" colspan="2" onclick="clickValue(0)">0</td>
+            <td style = "background-color: #DCDCDC"C onclick="clickValue('.')">.</td>   
+            <td style = "color : white; background-color : #FFA500" onclick="equalValue()">=</td>
+        
+        </tr>
+    </form>
+    </table>
+</body> 
+</html>
